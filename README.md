@@ -1,4 +1,4 @@
-# MIDI notes — PTZ controller add-on
+# MIDI notes — jadeck add-on
 
 Sends a MIDI note per slide action, for software that listens for MIDI.
 
@@ -7,7 +7,7 @@ Install: it ships with the controller (Settings → Add-ons); newer releases of 
 Build every platform and the `.ptzaddon` package:
 
 ```bash
-go run github.com/toolingdev/ptz-controller/sdk/addon/cmd/ptz-addon build
+go run github.com/toolingdev/jadeck/sdk/addon/cmd/ptz-addon build
 ```
 
 Try it on a controller: Settings → Add-ons → Developer → Load a folder (this folder),

@@ -6,7 +6,7 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/toolingdev/ptz-controller/sdk/addon"
+	"github.com/toolingdev/jadeck/sdk/addon"
 )
 
 type fakeOut struct{ sent [][]byte }

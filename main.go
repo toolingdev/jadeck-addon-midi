@@ -1,11 +1,11 @@
-// MIDI notes: a generic PTZ controller add-on. Sends one MIDI note per
+// MIDI notes: a generic jadeck add-on. Sends one MIDI note per
 // slide action, for slide software that listens for MIDI.
 package main
 
 import (
 	"encoding/json"
 
-	"github.com/toolingdev/ptz-controller/sdk/addon"
+	"github.com/toolingdev/jadeck/sdk/addon"
 )
 
 // Version is set by the release build.
@@ -16,7 +16,7 @@ func main() { addon.Serve(spec()) }
 func spec() addon.Spec {
 	return addon.Spec{
 		Manifest: addon.Manifest{
-			ID: "midi", Name: "MIDI notes", Version: Version, Publisher: "PTZ Controller", APIVersion: addon.APIVersion, Repo: "toolingdev/ptz-addon-midi", Generic: true,
+			ID: "midi", Name: "MIDI notes", Version: Version, Publisher: "jadeck", APIVersion: addon.APIVersion, Repo: "toolingdev/jadeck-addon-midi", Generic: true,
 			Description: "Sends a MIDI note per slide action, for software that listens for MIDI.",
 			Reaches:     "MIDI outputs on this PC (e.g. a loopMIDI port)",
 			ConnectionTypes: []addon.ConnectionType{{
