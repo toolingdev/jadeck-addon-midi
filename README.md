@@ -1,5 +1,9 @@
 # MIDI notes — PTZ controller add-on
 
+Sends a MIDI note per slide action, for software that listens for MIDI.
+
+Install: it ships with the controller (Settings → Add-ons); newer releases of this repository arrive as updates there.
+
 Build every platform and the `.ptzaddon` package:
 
 ```bash
