@@ -14,6 +14,26 @@ import (
 // either a device path (/dev/snd/midiC1D0) or a substring of a sound
 // card name from /proc/asound/cards; empty = first raw MIDI device.
 
+func init() { openOut, listPorts = openALSA, alsaPorts }
+
+// alsaPorts names the raw MIDI devices (for the port picker): the card
+// name when known, else the device path. Either works as "port".
+func alsaPorts() []string {
+	devs, _ := filepath.Glob("/dev/snd/midiC*D*")
+	cards := cardNames()
+	var out []string
+	for _, d := range devs {
+		var c, dev int
+		fmt.Sscanf(filepath.Base(d), "midiC%dD%d", &c, &dev)
+		if n := cards[c]; n != "" && dev == 0 {
+			out = append(out, n)
+		} else {
+			out = append(out, d)
+		}
+	}
+	return out
+}
+
 type fileOut struct {
 	f    *os.File
 	name string

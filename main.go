@@ -9,7 +9,7 @@ import (
 )
 
 // Version is set by the release build.
-var Version = "1.0.0"
+var Version = "1.0.2"
 
 func main() { addon.Serve(spec()) }
 

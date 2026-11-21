@@ -31,6 +31,21 @@ type midiOutCaps struct {
 	Support       uint32
 }
 
+func init() { openOut, listPorts = openWinmm, winmmPorts }
+
+// winmmPorts names the MIDI outputs (for the port picker).
+func winmmPorts() []string {
+	n, _, _ := pGetNumDevs.Call()
+	var out []string
+	for i := uintptr(0); i < n; i++ {
+		var caps midiOutCaps
+		if r, _, _ := pGetDevCaps.Call(i, uintptr(unsafe.Pointer(&caps)), unsafe.Sizeof(caps)); r == 0 {
+			out = append(out, syscall.UTF16ToString(caps.Pname[:]))
+		}
+	}
+	return out
+}
+
 type winOut struct {
 	h    uintptr
 	name string
